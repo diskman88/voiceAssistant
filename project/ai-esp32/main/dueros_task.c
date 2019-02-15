@@ -269,7 +269,7 @@ static void duer_login(void)
     }
     else{
         ESP_LOGI(TAG, "duer_start, len:%d\n%s", strlen(pDuerprofile), pDuerprofile);
-        duer_start(pDuerprofile, strlen(pDuerprofile));  
+        duer_start(pDuerprofile, strlen(pDuerprofile));
     }
 }
 
@@ -385,6 +385,7 @@ static void dueros_task(void *pvParameters)
                 ESP_LOGI(TAG, "Dueros DUER_CMD_CONNECTED, duer_state:%d", duer_state);
                 duer_state = DUER_STATE_CONNECTED;
                 retry_num = 1;
+                led_indicator_set(0, led_work_mode_disconnect); 
             } else if (duer_msg.type == DUER_CMD_START) {
                 if (duer_state < DUER_STATE_CONNECTED) {
                     ESP_LOGW(TAG, "Dueros has not connected, state:%d", duer_state);

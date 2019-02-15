@@ -23,6 +23,7 @@ static const char *TAG = "bits resource";
 static int lamp_on_off = OFF;
 static int lamp_color = 4;
 static int lamp_brightness = 0;
+static int switch_on_off = OFF;
 
 static  void sendPackage(uint8_t lingoId, uint8_t command, uint8_t* sourceBuff, uint8_t length);
 static  int duerMsgProccess(duer_msg_t *msg, duer_addr_t *addr, char *deviceName, char *valueName, int *value);
@@ -45,11 +46,18 @@ static duer_status_t bits_set_lamp_color(duer_context ctx, duer_msg_t *msg, duer
     return DUER_OK;	
 }
 
+static duer_status_t bits_set_switch_onOff(duer_context ctx, duer_msg_t *msg, duer_addr_t *addr)
+{
+	duerMsgProccess(msg, addr, "switch", "on_off", &switch_on_off);
+    return DUER_OK;	
+}
+
 void bits_regist_resource(void){
 	duer_res_t res[] = {
 		  {DUER_RES_MODE_DYNAMIC, DUER_RES_OP_PUT | DUER_RES_OP_GET, "bits_lampBrightness",.res.f_res = bits_set_lamp_brightness},
 		  {DUER_RES_MODE_DYNAMIC, DUER_RES_OP_PUT | DUER_RES_OP_GET, "bits_lampOnOff",.res.f_res = bits_set_lamp_OnOff},
 		  {DUER_RES_MODE_DYNAMIC, DUER_RES_OP_PUT | DUER_RES_OP_GET, "bits_lampColor",.res.f_res = bits_set_lamp_color},
+		  {DUER_RES_MODE_DYNAMIC, DUER_RES_OP_PUT | DUER_RES_OP_GET, "bits_switchOnOff",.res.f_res = bits_set_switch_onOff},
 	};
 
 	duer_add_resources(res, sizeof(res) / sizeof(res[0]));
