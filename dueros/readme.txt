@@ -1,5 +1,6 @@
 2019.05.11
 用当前的esp-adf构造项目
+adf提交：925393609f1b0da207feea28b8470e449241cd7e
 
 测试固件
 1、复制example下的dueros例程到项目文件夹
