@@ -1,1 +1,14 @@
 dueros/build/
+dueros/sdkconfig.old
+.gitignore
+esp-adf/esp-idf/tools/kconfig/lxdialog/yesno.o
+esp-adf/esp-idf/tools/kconfig/lxdialog/util.o
+esp-adf/esp-idf/tools/kconfig/lxdialog/textbox.o
+esp-adf/esp-idf/tools/kconfig/lxdialog/menubox.o
+esp-adf/esp-idf/tools/kconfig/lxdialog/inputbox.o
+esp-adf/esp-idf/tools/kconfig/lxdialog/checklist.o
+esp-adf/esp-idf/tools/kconfig/zconf.tab.o
+esp-adf/esp-idf/tools/kconfig/mconf.o
+esp-adf/esp-idf/.gitlab-ci.yml
+esp-adf/esp-idf/.gitmodules
+esp-adf/esp-idf/.editorconfig
