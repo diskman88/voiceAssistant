@@ -13,9 +13,16 @@ adf提交：925393609f1b0da207feea28b8470e449241cd7e
 代码修改：
 对esp-adf库的修改：
 注：已经从乐鑫fork adf库，可以修改并保存之。
-1、修改dueros_service.c中的duer_login()函数，加入对从串口中传过来的profile的处理。
-
+1、修改dueros_service.c
+   duer_event_hook(duer_event_t *event)中加入
+   bits_regist_resource(); //注册资源
+   
+   duer_login()函数，加入对从串口中传过来的profile的处理。
+2、加大初始化的音量设置。
+    修改duer_audio_wrapper.c中setup_play()中默认音量设置，由45改为70
+    esp_audio_vol_set(player, 70);
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+dueros例徎修改：
 1、修改按键接口
    去掉不用的触摸按键，增加录音触摸按键
     periph_touch_cfg_t touch_cfg = {
@@ -54,12 +61,9 @@ adf提交：925393609f1b0da207feea28b8470e449241cd7e
   3）上串口通信中收到的参数会保存到flash中。
 
 7、语音控制点实现
-   加入act.c/h，在dueros_serviceduer_event_hook()中加入：
-   bits_regist_resource(); //注册资源
+   加入act.c/h，
 
-8、加大初始化的音量设置。
-    修改duer_audio_wrapper.c中setup_play()中默认音量设置，由45改为70
-    esp_audio_vol_set(player, 70);
+
 
 
 
