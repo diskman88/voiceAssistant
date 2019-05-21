@@ -12,7 +12,6 @@ esp-adf/esp-idf/tools/kconfig/mconf.o
 esp-adf/esp-idf/.gitlab-ci.yml
 esp-adf/esp-idf/.gitmodules
 esp-adf/esp-idf/.editorconfig
-esp-adf
 .vscode/ipch/510aecec2b2cddd5/duer_audio_wrapper.ipch
 .vscode/ipch/510aecec2b2cddd5/mmap_address.bin
 .vscode/ipch/54a0b7c0f1f122cc/mmap_address.bin
