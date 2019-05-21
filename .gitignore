@@ -12,3 +12,4 @@ esp-adf/esp-idf/tools/kconfig/mconf.o
 esp-adf/esp-idf/.gitlab-ci.yml
 esp-adf/esp-idf/.gitmodules
 esp-adf/esp-idf/.editorconfig
+esp-adf
