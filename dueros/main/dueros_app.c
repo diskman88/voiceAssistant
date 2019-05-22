@@ -112,7 +112,8 @@ void rec_engine_cb(rec_event_type_t type, void *user_data)
         if (duer_audio_wrapper_get_state() == AUDIO_STATUS_RUNNING) {
             duer_audio_wrapper_pause();
         }
-        display_service_set_pattern(disp_serv, DISPLAY_PATTERN_TURN_ON, 0);
+        // display_service_set_pattern(disp_serv, DISPLAY_PATTERN_TURN_ON, 0);
+        display_service_set_pattern(disp_serv, DISPLAY_PATTERN_RECORD_BEGIN, 0);
     } else if (REC_EVENT_VAD_START == type) {
         ESP_LOGI(TAG, "rec_engine_cb - REC_EVENT_VAD_START");
         audio_service_start(duer_serv_handle);
@@ -125,7 +126,8 @@ void rec_engine_cb(rec_event_type_t type, void *user_data)
         if (dueros_service_state_get() == SERVICE_STATE_RUNNING) {
             audio_service_stop(duer_serv_handle);
         }
-        display_service_set_pattern(disp_serv, DISPLAY_PATTERN_TURN_OFF, 0);
+        // display_service_set_pattern(disp_serv, DISPLAY_PATTERN_TURN_OFF, 0);
+        display_service_set_pattern(disp_serv, DISPLAY_PATTERN_RECORD_END, 0);
         ESP_LOGI(TAG, "rec_engine_cb - REC_EVENT_WAKEUP_END");
     } else {
 
@@ -345,7 +347,10 @@ void duer_app_init(void)
     if (set != NULL) {
         esp_periph_set_register_callback(set, periph_callback, NULL);
     }
-    led_indicator_handle_t led = led_indicator_init((gpio_num_t)get_green_led_gpio());
+    gpio_num_t gpio_num[2];
+    gpio_num[0] = get_green_led_gpio();
+    gpio_num[1] = get_blue_led_gpio();
+    led_indicator_handle_t led = led_indicator_init(gpio_num); //((gpio_num_t)get_green_led_gpio());
     display_service_config_t display = {
         .based_cfg = {
             .task_stack = 0,

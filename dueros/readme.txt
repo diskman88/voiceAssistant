@@ -21,6 +21,10 @@ adf提交：925393609f1b0da207feea28b8470e449241cd7e
 2、加大初始化的音量设置。
     修改duer_audio_wrapper.c中setup_play()中默认音量设置，由45改为70
     esp_audio_vol_set(player, 70);
+
+3、修改led_indicator.h/c文件，加多一个led灯
+
+4、
 －－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
 dueros例徎修改：
 1、修改按键接口
